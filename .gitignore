@@ -13,6 +13,7 @@ __pycache__/
 *.pyo
 *.pyd
 *.sqlite3
+.database.cpython-*-*.db 
 
 # Virtual environment
 Backend/.env
