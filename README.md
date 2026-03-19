@@ -51,3 +51,13 @@ Além da funcionalidade, o foco também foi aplicar conceitos de:
     │   └── style.css
     └── js/
         └── script.js
+
+
+Crie um arquivo `.env` na raiz do projeto com as variáveis:
+
+```env
+DB_HOST=127.0.0.1
+DB_USER=seu_usuario
+DB_PASSWORD=sua_senha
+DB_NAME=agendamento_exame
+DB_PORT=3306

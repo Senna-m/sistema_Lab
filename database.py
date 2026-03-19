@@ -1,4 +1,8 @@
+import os
 import mysql.connector
+from dotenv import load_dotenv
+
+load_dotenv()
 
 DB_CONFIG = {
     "host": os.getenv("DB_HOST"),
@@ -7,6 +11,7 @@ DB_CONFIG = {
     "database": os.getenv("DB_NAME"),
     "port": int(os.getenv("DB_PORT", 3306))
 }
+
 
 def conectar():
     return mysql.connector.connect(**DB_CONFIG)
@@ -23,7 +28,8 @@ def criar_tabelas():
             preparo TEXT,
             amostra VARCHAR(100),
             prazo VARCHAR(50),
-            orientacao TEXT
+            orientacao TEXT,
+            categoria VARCHAR(100)
         )
     """)
 
@@ -62,7 +68,7 @@ def buscar_exame_por_nome(nome_exame):
     cursor = conn.cursor(dictionary=True)
 
     sql = """
-        SELECT nome_exame, preparo, amostra, prazo, orientacao
+        SELECT nome_exame, preparo, amostra, prazo, orientacao, categoria
         FROM exames
         WHERE nome_exame LIKE %s
         ORDER BY nome_exame
